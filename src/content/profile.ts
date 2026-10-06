@@ -23,7 +23,7 @@ export const lines: Record<LineId, Line> = {
 };
 
 export const profile = {
-  name: 'Zahira Neira Murillo',
+  name: 'Zahira Neira',
   shortName: 'Zahira Neira',
   role: 'Desarrolladora de software',
   age: 20,
