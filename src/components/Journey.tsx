@@ -2,7 +2,6 @@ import { journey, profile } from '../content/profile';
 import './Journey.css';
 
 export default function Journey() {
-  const showYears = journey.every((stop) => stop.year);
   return (
     <section className="journey section" id="trayectoria" aria-labelledby="journey-title">
       <div className="wrap journey__grid">
@@ -11,7 +10,7 @@ export default function Journey() {
             Trayectoria
           </h2>
           <p className="lede">
-            De la universidad a un sistema real. Cada estación sumó una disciplina nueva.
+            En orden: de la universidad y el bootcamp a construir mi propia plataforma.
           </p>
         </header>
 
@@ -25,7 +24,7 @@ export default function Journey() {
                 </p>
                 <p className="journey__place">
                   {stop.place}
-                  {showYears && <span className="journey__year">{stop.year}</span>}
+                  {stop.period && <span className="journey__year">{stop.period}</span>}
                 </p>
               </div>
             </li>

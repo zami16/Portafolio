@@ -40,10 +40,10 @@ const mapLines: MapLine[] = [
 
 const stations: MapStation[] = [
   { id: 'usco', name: 'USCO', sub: 'Tecnóloga en software', t: 0, lanes: [0], lines: ['formacion'], href: '#sobre-mi' },
-  { id: 'simps', name: 'SIMPS', sub: 'Bootcamp, EAFIT', t: 1.6, lanes: [0], lines: ['formacion'], href: '#simps' },
-  { id: 'sg-web', name: 'S&G web', sub: 'Sitio web', t: 3, lanes: [1], lines: ['web', 'automatizacion'], href: '#sg-web' },
-  { id: 'connectart', name: 'ConnectArt', sub: 'Sitio y producto', t: 4.4, lanes: [1, 2], lines: ['web', 'producto'], href: '#connectart' },
-  { id: 'crm', name: 'CRM S&G', sub: 'GoHighLevel', t: 6, lanes: [3], lines: ['automatizacion'], href: '#crm' },
+  { id: 'simps', name: 'SIMPS', sub: 'Bootcamp EAFIT y EA', t: 1.6, lanes: [0], lines: ['formacion'], href: '#simps' },
+  { id: 'sg-web', name: 'S&G web', sub: 'Sitio bilingüe', t: 3, lanes: [1], lines: ['web', 'automatizacion'], href: '#sg-web' },
+  { id: 'connectart', name: 'ConnectArt', sub: 'Agencia creativa', t: 4.4, lanes: [1, 2], lines: ['web', 'producto'], href: '#connectart' },
+  { id: 'crm', name: 'HEBRIX', sub: 'CRM de marca propia', t: 6, lanes: [3], lines: ['automatizacion'], href: '#crm' },
   {
     id: 'next',
     name: 'Lo que sigue',

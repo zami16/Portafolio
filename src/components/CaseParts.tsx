@@ -52,7 +52,7 @@ export function CaseFacts({ project }: { project: Project }) {
 
 /** Funcionalidades del producto y, aparte, lo que hizo Zahira. */
 export function CaseWork({ project }: { project: Project }) {
-  if (!project.features.length && !project.contributions.length) return null;
+  if (!project.features.length && !project.contributions.length && !project.results.length) return null;
   return (
     <div className="case-work">
       {project.features.length > 0 && (
@@ -75,7 +75,33 @@ export function CaseWork({ project }: { project: Project }) {
           </ul>
         </div>
       ))}
+      {project.results.length > 0 && (
+        <div className="case-work__group">
+          <h4 className="case-work__title">Resultados</h4>
+          <ul className="case-features case-features--results">
+            {project.results.map((r) => (
+              <li key={r}>{r}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
+  );
+}
+
+/** Etapas reales del proyecto como un tramo de línea con sus estaciones. */
+export function CaseProcess({ project }: { project: Project }) {
+  if (!project.process.length) return null;
+  return (
+    <ol className="case-process">
+      {project.process.map((step) => (
+        <li key={step.when + step.what}>
+          <span className="case-process__dot" aria-hidden="true" />
+          <span className="case-process__when">{step.when}</span>
+          <span className="case-process__what">{step.what}</span>
+        </li>
+      ))}
+    </ol>
   );
 }
 

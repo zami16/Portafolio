@@ -84,7 +84,8 @@
 }
 
 .journey__year {
-  margin-left: var(--space-3);
+  display: block;
+  margin-top: var(--space-1);
   font-variant-numeric: tabular-nums;
   font-weight: 650;
   color: var(--ink);

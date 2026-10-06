@@ -147,12 +147,24 @@
   margin-top: var(--space-4);
 }
 
-/* S&G: el sitio dentro de un navegador */
-.case--sg {
+/* S&G y ConnectArt: imagen y texto arriba, el trabajo detallado debajo */
+.case__split {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
+}
+
+.case__split--media-first {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+}
+
+.case--sg .case-work,
+.case--connectart .case-work {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  margin-top: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--rule);
 }
 
 .browser {
@@ -204,27 +216,14 @@
   letter-spacing: -0.03em;
 }
 
-/* ConnectArt: el producto ocupa un campo de color completo */
-.case--connectart {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: stretch;
-}
-
-.case--connectart .case__text {
-  align-self: center;
-}
-
 /*
- * ConnectArt vive en dos líneas a la vez (Web y Producto). Sin captura todavía,
- * el visual es esa estación de intercambio, no un logotipo inventado.
+ * ConnectArt: sin captura todavía, el visual es su propia evolución
+ * dibujada como un tramo de línea con tres estaciones reales.
  */
 .product-field {
-  container-type: inline-size;
   border: 2px solid var(--ink);
   background: var(--ground-raised);
-  overflow: hidden;
+  padding: clamp(1.5rem, 1rem + 3vw, 3rem);
 }
 
 .product-field img {
@@ -233,58 +232,75 @@
   object-fit: cover;
 }
 
-.product-field__diagram {
-  position: relative;
-  aspect-ratio: 4 / 3;
+.product-field__caption {
+  margin-bottom: var(--space-6);
+  font-size: var(--step--1);
+  font-weight: 650;
+  color: var(--ink-muted);
 }
 
-.product-field__line {
+.case-process {
+  --dot: 1.5rem;
+  display: grid;
+  gap: var(--space-6);
+}
+
+.case-process li {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--dot) 1fr;
+  column-gap: var(--space-4);
+}
+
+.case-process li::before {
+  content: '';
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 3.2cqi;
-  margin-top: -1.6cqi;
+  left: calc(var(--dot) / 2 - 5px);
+  top: calc(var(--dot) / 2);
+  height: calc(100% + var(--space-6));
+  width: 10px;
   background: var(--line);
 }
 
-.product-field__line[data-line='web'] {
-  top: 30%;
+.case-process li:last-child::before {
+  display: none;
 }
 
-.product-field__line[data-line='producto'] {
-  top: 52%;
-}
-
-.product-field__station {
-  position: absolute;
-  left: 30%;
-  top: calc(30% - 4cqi);
-  width: 8cqi;
-  height: calc(22% + 8cqi);
-  border-radius: var(--radius-pill);
+.case-process__dot {
+  position: relative;
+  grid-row: span 2;
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 50%;
   background: var(--station-fill);
-  border: 1cqi solid var(--ink);
+  border: 3.5px solid var(--ink);
 }
 
-.product-field__mark {
-  position: absolute;
-  left: 5cqi;
-  bottom: 5cqi;
-  font-weight: 850;
-  font-stretch: var(--extra-wide);
-  font-size: 12cqi;
-  line-height: 0.9;
-  letter-spacing: -0.035em;
+.case-process li:last-child .case-process__dot {
+  background: var(--ink);
+}
+
+.case-process__when {
+  font-size: var(--step--1);
+  font-weight: 650;
+  color: var(--line-ink);
+}
+
+.case-process__what {
+  margin-top: var(--space-1);
+  font-size: var(--step-1);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.case-features--results li::before {
+  background: var(--line);
 }
 
 @media (max-width: 47.99rem) {
   .case-simps__grid,
-  .case--sg,
-  .case--connectart {
+  .case__split,
+  .case__split--media-first {
     grid-template-columns: 1fr;
-  }
-
-  .case--connectart .product-field {
-    order: -1;
   }
 }

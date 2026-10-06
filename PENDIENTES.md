@@ -1,42 +1,35 @@
 # Datos pendientes
 
-Todo se completa en **`src/content/profile.ts`**. Los campos en `null` no se muestran en la
-página, así que puedes llenarlos uno a uno sin romper nada.
+Todo se completa en **`src/content/profile.ts`** (y `src/content/crm.ts` para HEBRIX). Los campos
+en `null` o vacíos no se muestran en la página.
 
 ## Perfil y contacto
 
 - [ ] Hoja de vida en PDF, cuando exista: copiar a `public/` y poner la ruta en `contact.cv`.
 - [ ] Año de grado en la USCO (`profile.graduationYear`).
-- [ ] Dominio final del sitio (para `canonical`, `og:url` y sitemap).
+- [ ] Dominio final del portafolio (para `canonical`, `og:url` y sitemap).
 
-## Nodo Store, bootcamp SIMPS (`id: 'simps'`)
+## Capturas reales (`image` de cada proyecto)
 
-Confirmado: Universidad EAFIT con Electronic Arts, noviembre 2025 a junio 2026, equipo Nodo 404,
-app en nodo404.vercel.app. Tu parte se tomó de tus commits en los dos repositorios.
+El entorno de trabajo bloquea sggroupmd.com, connectart.online y nodo404.vercel.app, así que
+no pude sacarlas. Guarda cada captura en `public/` y llena `image` con `src` y `alt`.
 
-- [ ] Captura de la app (`image`). El entorno de trabajo no puede abrir nodo404.vercel.app.
+- [ ] Nodo Store
+- [ ] Sitio de S&G Group
+- [ ] ConnectArt (versión nueva, cuando esté publicada)
 
-## Sitio web de S&G Immigration (`id: 'sg-web'`)
+## ConnectArt
 
-Confirmado: sggroupmd.com y autorización de S&G.
+- [ ] Cuando publiques la versión nueva: cambiar `status`, el texto del botón y medir con
+      Lighthouse para agregar el puntaje a `results`.
 
-- [ ] Captura real del sitio (`image`): el entorno bloquea sggroupmd.com, así que hay que
-      subirla a mano a `public/` o permitir el dominio en la red del entorno.
-- [ ] Tecnologías, rol (¿lo hiciste sola?) y funcionalidades. Esta información está en tus
-      conversaciones de claude.ai, que esta sesión no puede leer: hay que pegarla aquí.
+## HEBRIX (entrega el 21 de noviembre de 2026)
 
-## ConnectArt (`id: 'connectart'`)
-
-Confirmado: connectart.online.
-
-- [ ] Captura real (`image`), mismo bloqueo de red que S&G.
-- [ ] Qué es exactamente, para quién, tecnologías, hosting y funcionalidades (misma nota).
-
-## CRM de S&G (`id: 'crm'`, más `src/content/crm.ts`)
-
-Confirmado: lo construiste completo, S&G autoriza mostrarlo, y WhatsApp, Twilio y los roles de
-usuario funcionan. Si cambia la estructura del CRM, actualizar `src/content/crm.ts`.
+- [ ] Actualizar cifras al entregar: semanas, campos, workflows publicados (hoy el sistema
+      muestra 8 publicados), integraciones que pasen de "en curso" a funcionando.
+- [ ] Stripe, cuando esté integrado: agregarlo a `stack`.
+- [ ] Captura de la pantalla de inicio de sesión de app.hebrix.io (sin datos de clientes).
 
 ## Otros proyectos (sin incluir todavía)
 
-- [ ] ¿Incluir `zami16/NODO` o `JAMLizca/Hestia`? (El reto de nodo404 ya está incluido como Nodo Store.)
+- [ ] ¿Incluir `zami16/NODO` o `JAMLizca/Hestia`?
