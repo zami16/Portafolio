@@ -23,7 +23,7 @@ export const lines: Record<LineId, Line> = {
 };
 
 export const profile = {
-  name: 'Zahira Neira Murillo',
+  name: 'Zahira Neira',
   shortName: 'Zahira Neira',
   role: 'Desarrolladora de software',
   age: 20,
@@ -72,6 +72,10 @@ export interface Project {
   team: string | null;
   /** Lo que hizo Zahira, agrupado por área. */
   contributions: { area: string; items: string[] }[];
+  /** Resultados verificables. Nada de métricas inventadas. */
+  results: string[];
+  /** Etapas reales del proyecto, en orden. */
+  process: { when: string; what: string }[];
   /** Captura real del proyecto dentro de /public. */
   image: { src: string; alt: string } | null;
 }
@@ -122,25 +126,41 @@ export const projects: Project[] = [
         ],
       },
     ],
+    results: [],
+    process: [],
     image: null,
   },
   {
     id: 'sg-web',
     station: 'S&G web',
-    name: 'Sitio web de S&G Immigration',
+    name: 'Sitio web de S&G Group',
     lines: ['web'],
-    summary: 'Sitio de una empresa de servicios migratorios en Maryland, Estados Unidos, con versión en español para sus clientes.',
-    role: null,
-    problem: null,
+    summary:
+      'Sitio bilingüe para S&G Group LLC, una firma de Owings Mills, Maryland, que atiende a la comunidad latina en Estados Unidos con servicios de inmigración, impuestos y seguros.',
+    role: 'Freelance. Desarrollo full-stack de principio a fin: arquitectura, maquetación, integraciones, SEO, despliegue y mantenimiento',
+    problem:
+      'Que cada cliente encuentre el servicio que necesita y agende una consulta, y que la firma publique contenido sin depender del desarrollador.',
     solution: null,
-    features: [],
-    stack: [],
-    period: null,
+    features: [
+      'Nueve secciones en español e inglés, con rutas por idioma',
+      'Blog con calendario editorial de 18 artículos que se publican solos en su fecha, con revisión legal previa',
+      'SEO técnico: metadatos, datos estructurados, sitemap automático y enlazado interno',
+      'Reels, casos de éxito y reseñas administrados desde Google Sheets, con moderación antes de publicarse',
+      'Formularios de contacto, agendamiento y reseñas, con correos enviados por Resend desde el dominio propio',
+      'Identidad azul marino y dorado, animaciones al hacer scroll y botón flotante de WhatsApp',
+    ],
+    stack: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'next-intl', 'Resend', 'Google Sheets y Apps Script', 'Vercel'],
+    period: 'Junio a octubre de 2026',
     status: null,
     url: 'https://sggroupmd.com/es',
     repos: [],
     team: null,
     contributions: [],
+    results: [
+      'El equipo de marketing publica contenido sin tocar código',
+      'Preparado para posicionar búsquedas como "abogado de inmigración en Maryland"',
+    ],
+    process: [],
     image: null,
   },
   {
@@ -148,90 +168,114 @@ export const projects: Project[] = [
     station: 'ConnectArt',
     name: 'ConnectArt',
     lines: ['web', 'producto'],
-    summary: 'Sitio y producto digital: diseño, implementación, dominio y despliegue.',
-    role: null,
+    summary:
+      'Sitio oficial de ConnectArt, una agencia de producción audiovisual y marketing digital de Neiva. Muestra su portafolio con una estética editorial oscura y convierte visitas en clientes por WhatsApp.',
+    role: 'Freelance. Diseño UI/UX, desarrollo frontend, optimización y despliegue',
     problem: null,
     solution: null,
-    features: [],
-    stack: [],
-    period: null,
-    status: null,
+    features: [
+      'Carrito de cotización sin precios que arma un mensaje de WhatsApp con los servicios elegidos',
+      'Formulario de contacto conectado a WhatsApp',
+      'Portafolio en mosaico editorial con CSS Grid, servicios por pestañas y videos que cargan al llegar a ellos',
+      'Animaciones al hacer scroll, contadores y cursor propio, todo respetando la opción de reducir movimiento',
+    ],
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'CSS con design tokens', 'next/image', 'next/font', 'ffmpeg', 'WebP'],
+    period: 'Abril a octubre de 2026',
+    status: 'En línea está la versión 1; la versión nueva está en proceso de despliegue',
+    urlLabel: 'Ver sitio publicado',
     url: 'https://connectart.online',
     repos: [],
     team: null,
     contributions: [],
+    results: [
+      'Imágenes y videos de unos 203 MB a unos 14 MB, un 93 % menos',
+      'Contraste llevado a WCAG AA: antes fallaban 17 de 20 estilos de texto',
+      'SEO completo: metadatos, sitemap, robots y tarjeta para redes sociales',
+      'Navegación por teclado, etiquetas accesibles y diseño para celular, tablet y escritorio',
+    ],
+    process: [
+      { when: 'Abril y mayo de 2026', what: 'Versión 1: sitio estático en HTML, CSS y JavaScript' },
+      { when: 'Mayo de 2026', what: 'Migración a Next.js y componentes de React' },
+      { when: 'Octubre de 2026', what: 'Auditoría de UX, accesibilidad, rendimiento y SEO; refactor en más de 20 componentes' },
+    ],
     image: null,
   },
   {
     id: 'crm',
-    station: 'CRM S&G',
-    name: 'CRM de S&G Immigration',
+    station: 'HEBRIX',
+    name: 'HEBRIX',
     lines: ['automatizacion'],
     summary:
-      'El sistema que organiza la operación comercial de S&G Immigration en GoHighLevel: cómo entra un contacto, por qué etapas pasa y qué se automatiza.',
-    role: 'Lo construí completo',
+      'Plataforma CRM de marca propia, construida sobre GoHighLevel en modo agencia para venderse por suscripción a negocios en Estados Unidos. Su primer cliente en producción es S&G Group LLC.',
+    role: 'Diseño e implementación de la plataforma y soporte técnico',
     problem: null,
     solution: null,
-    features: [
-      'WhatsApp integrado para la comunicación con clientes',
-      'Telefonía con Twilio',
-      'Usuarios con roles y permisos',
+    features: [],
+    stack: [
+      'GoHighLevel (agencia / SaaS)',
+      'LeadConnector (LC Phone / Twilio)',
+      'Workflows',
+      'API REST de GHL',
+      'DNS en Namecheap',
+      'CSS',
+      'Meta Business',
+      'Google Workspace',
     ],
-    stack: ['GoHighLevel'],
-    period: 'Desde agosto de 2026',
-    status: 'Funcionando, con mejoras en curso',
-    url: null,
+    period: 'Agosto a noviembre de 2026, 12 semanas',
+    status: 'Primer cliente en producción; entrega el 21 de noviembre de 2026',
+    urlLabel: 'Ver plataforma',
+    url: 'https://app.hebrix.io',
     repos: [],
     team: null,
     contributions: [],
+    results: [
+      'Una plataforma lista para venderse por suscripción, con un primer cliente en producción y una estructura reutilizable para nuevos sectores.',
+    ],
+    process: [],
     image: null,
   },
 ];
 
+/** En orden cronológico. */
 export const journey = [
   {
     id: 'usco',
-    station: 'USCO',
     title: profile.degree,
     place: profile.university,
     line: 'formacion' as LineId,
-    year: profile.graduationYear,
+    period: profile.graduationYear ? String(profile.graduationYear) : null,
     href: '#sobre-mi',
   },
   {
     id: 'simps',
-    station: 'SIMPS',
-    title: 'Bootcamp SIMPS',
+    title: 'Bootcamp SIMPS: Nodo Store',
     place: 'Universidad EAFIT y Electronic Arts',
     line: 'formacion' as LineId,
-    year: null as number | null,
+    period: 'Nov 2025 - jun 2026' as string | null,
     href: '#simps',
   },
   {
-    id: 'sg-web',
-    station: 'S&G web',
-    title: 'Sitio web',
-    place: 'S&G Immigration',
-    line: 'web' as LineId,
-    year: null as number | null,
-    href: '#sg-web',
-  },
-  {
     id: 'connectart',
-    station: 'ConnectArt',
-    title: 'Sitio y producto',
-    place: 'ConnectArt',
+    title: 'Sitio de ConnectArt',
+    place: 'Freelance, Neiva',
     line: 'producto' as LineId,
-    year: null as number | null,
+    period: 'Abr - oct 2026' as string | null,
     href: '#connectart',
   },
   {
+    id: 'sg-web',
+    title: 'Sitio bilingüe de S&G Group',
+    place: 'Freelance, Maryland',
+    line: 'web' as LineId,
+    period: 'Jun - oct 2026' as string | null,
+    href: '#sg-web',
+  },
+  {
     id: 'crm',
-    station: 'CRM S&G',
-    title: 'CRM en GoHighLevel',
-    place: 'S&G Immigration',
+    title: 'HEBRIX, CRM de marca propia',
+    place: 'Primer cliente: S&G Group',
     line: 'automatizacion' as LineId,
-    year: 2026,
+    period: 'Ago - nov 2026' as string | null,
     href: '#crm',
   },
 ];
@@ -244,12 +288,13 @@ export interface StackGroup {
 
 /** Solo tecnologías confirmadas. Agrega aquí las que falten. */
 export const stack: StackGroup[] = [
-  { name: 'Interfaz', items: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Vite'] },
+  { name: 'Interfaz', items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS'] },
   { name: 'Backend', items: ['Java', 'Spring Boot', 'Spring Security', 'JWT'] },
-  { name: 'Datos', items: ['SQL', 'PostgreSQL'] },
+  { name: 'Datos', items: ['SQL', 'PostgreSQL', 'Google Sheets y Apps Script'] },
+  { name: 'Despliegue e integraciones', items: ['Vercel', 'Resend', 'DNS', 'Git y GitHub'] },
   {
     name: 'CRM y automatización',
-    items: ['GoHighLevel', 'Pipelines', 'Workflows', 'Formularios', 'Campos personalizados'],
+    items: ['GoHighLevel', 'LeadConnector y Twilio', 'Workflows', 'API REST de GHL', 'Meta Business'],
     line: 'automatizacion',
   },
 ];

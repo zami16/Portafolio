@@ -1,6 +1,6 @@
 # Dirección de diseño (documento interno, no se publica)
 
-Contrato de dirección para el portafolio de Zahira Neira Murillo. Sirve para revisar
+Contrato de dirección para el portafolio de Zahira Neira. Sirve para revisar
 cualquier cambio futuro: si una decisión contradice este documento, se discute antes.
 
 ## Proceso seguido

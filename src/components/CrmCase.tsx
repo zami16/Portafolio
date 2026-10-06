@@ -6,11 +6,16 @@ import {
   fieldGroups,
   fieldTypeLabel,
   forms,
+  integrationsInProgress,
+  operations,
   pipeline,
+  projectManagement,
+  whiteLabel,
   workflowGroups,
 } from '../content/crm';
 import { useInView } from '../hooks/useInView';
 import { CaseFacts, CaseHeading } from './CaseParts';
+import MobileCollapse from './MobileCollapse';
 import './CrmCase.css';
 
 const project = projects.find((p) => p.id === 'crm')!;
@@ -24,8 +29,8 @@ function Pipeline() {
       <div className="crm-block__head">
         <h4 className="crm-block__title">Cómo avanza un contacto</h4>
         <p className="crm-block__desc">
-          Pipeline <strong>{pipeline.name}</strong>: {crmCounts.stages} etapas, desde que entra el contacto hasta que
-          se cierra como cliente o como perdido.
+          Pipeline <strong>{pipeline.name}</strong>: {crmCounts.stages} etapas, cada una con su probabilidad de cierre,
+          desde que entra el contacto hasta que se cierra como cliente o como perdido.
         </p>
       </div>
 
@@ -51,7 +56,10 @@ function Pipeline() {
               <li key={s.name} style={{ ['--i' as string]: i }}>
                 <span className="pipeline__dot" aria-hidden="true" />
                 <span className="pipeline__name">{s.name}</span>
-                <span className="pipeline__gloss">{s.gloss}</span>
+                <span className="pipeline__gloss">
+                  {s.gloss}
+                  <span className="pipeline__prob">{s.probability} %</span>
+                </span>
               </li>
             ))}
           </ol>
@@ -62,7 +70,9 @@ function Pipeline() {
             <li key={o.name} data-kind={o.kind}>
               <span className="pipeline__dot" aria-hidden="true" />
               <span className="pipeline__name">{o.name}</span>
-              <span className="pipeline__gloss">{o.gloss}</span>
+              <span className="pipeline__gloss">
+                {o.gloss}, {o.probability} %
+              </span>
             </li>
           ))}
         </ul>
@@ -99,18 +109,81 @@ function Workflows() {
   );
 }
 
-function Connections() {
+function WhiteLabel() {
+  return (
+    <div className="crm-block whitelabel">
+      <div className="crm-block__head">
+        <h4 className="crm-block__title">Una plataforma con marca propia</h4>
+        <p className="crm-block__desc">
+          HEBRIX corre sobre GoHighLevel en modo agencia, pero el cliente solo ve HEBRIX.
+        </p>
+      </div>
+      <div className="whitelabel__grid">
+        <ul className="whitelabel__domains">
+          {whiteLabel.domains.map((d) => (
+            <li key={d.host}>
+              <span className="whitelabel__host mono">{d.host}</span>
+              <span className="whitelabel__role">{d.role}</span>
+            </li>
+          ))}
+        </ul>
+        <ul className="crm-list">
+          {whiteLabel.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function Operations() {
   return (
     <div className="crm-block">
       <div className="crm-block__head">
-        <h4 className="crm-block__title">Comunicación y acceso</h4>
-        <p className="crm-block__desc">Lo que conecta el CRM con los clientes y con el equipo de la firma.</p>
+        <h4 className="crm-block__title">Agenda, segmentación y acceso</h4>
       </div>
-      <ul className="crm-connections">
-        {project.features.map((f) => (
-          <li key={f}>{f}</li>
+      <div className="crm-columns">
+        {operations.map((group) => (
+          <section key={group.name} aria-label={group.name}>
+            <h5 className="crm-columns__title">{group.name}</h5>
+            <ul className="crm-list">
+              {group.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
         ))}
-      </ul>
+      </div>
+    </div>
+  );
+}
+
+function Roadmap() {
+  return (
+    <div className="crm-block">
+      <div className="crm-columns crm-columns--two">
+        <section aria-labelledby="crm-next">
+          <h4 className="crm-block__title" id="crm-next">
+            Integraciones en curso
+          </h4>
+          <ul className="crm-list">
+            {integrationsInProgress.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+        <section aria-labelledby="crm-pm">
+          <h4 className="crm-block__title" id="crm-pm">
+            Cómo gestioné el proyecto
+          </h4>
+          <ul className="crm-list">
+            {projectManagement.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }
@@ -199,20 +272,33 @@ export default function CrmCase() {
           <div>
             <CaseHeading project={project} />
             <p className="crm__summary">{project.summary}</p>
+            {project.results.map((r) => (
+              <p className="crm__result" key={r}>
+                {r}
+              </p>
+            ))}
           </div>
           <div className="crm__aside">
             <CaseFacts project={project} />
           </div>
         </header>
 
+        <WhiteLabel />
+        <p className="crm__client">
+          Primer cliente: <strong>S&amp;G Group LLC</strong>. Esto es lo que configuré para la firma.
+        </p>
         <Pipeline />
-        <Workflows />
-        <Connections />
-        <Fields />
+        <MobileCollapse label="Ver automatizaciones, agenda, campos e integraciones">
+          <Workflows />
+          <Operations />
+          <Fields />
+          <Roadmap />
+        </MobileCollapse>
 
         <p className="crm__source">
-          Estructura tomada del CRM en modo lectura el {crmSnapshotDate}. Los nombres aparecen tal como están en
-          GoHighLevel y no se muestra ningún dato de clientes.
+          Estructura tomada de la cuenta del primer cliente en modo lectura el {crmSnapshotDate}. Los nombres aparecen
+          tal como están en el sistema y no se muestra ningún dato de clientes. Las cifras son las de esa fecha; el
+          proyecto se entrega el 21 de noviembre de 2026.
         </p>
       </div>
     </article>

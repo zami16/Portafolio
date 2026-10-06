@@ -18,8 +18,8 @@ export default function About() {
         <div className="about__body">
           <p>
             Soy {profile.degree.toLowerCase()} de la {profile.university}. He trabajado en proyectos reales y
-            académicos de desarrollo web, automatización, CRM y software. Hoy desarrollo el CRM de una empresa de
-            servicios migratorios en Estados Unidos.
+            académicos de desarrollo web, automatización, CRM y software. Hoy construyo HEBRIX, una plataforma CRM
+            de marca propia para negocios en Estados Unidos, que ya tiene su primer cliente en producción.
           </p>
           <p>
             Me interesa el software que toca un proceso de verdad: cómo llega un cliente, quién le hace seguimiento,

@@ -51,7 +51,7 @@
   --space-7: 3rem;
   --space-8: 4rem;
   --space-9: 6rem;
-  --section: clamp(5rem, 3rem + 8vw, 9.5rem);
+  --section: clamp(3.5rem, 2rem + 7vw, 9.5rem);
   --gutter: clamp(1rem, 0.4rem + 2.6vw, 3rem);
   --max: 84rem;
   --measure: 62ch;

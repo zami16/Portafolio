@@ -84,7 +84,8 @@
 }
 
 .journey__year {
-  margin-left: var(--space-3);
+  display: block;
+  margin-top: var(--space-1);
   font-variant-numeric: tabular-nums;
   font-weight: 650;
   color: var(--ink);
@@ -97,5 +98,23 @@
 
   .journey__head {
     position: static;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .journey__list {
+    gap: var(--space-6);
+  }
+
+  .journey__list li::before {
+    height: calc(100% + var(--space-6));
+  }
+
+  .journey__title {
+    font-size: var(--step-1);
+  }
+
+  .journey__place {
+    font-size: var(--step--1);
   }
 }

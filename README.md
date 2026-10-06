@@ -1,4 +1,4 @@
-# Portafolio de Zahira Neira Murillo
+# Portafolio de Zahira Neira
 
 Tecnóloga en Desarrollo de Software (Universidad Surcolombiana). Sitios web, productos
 digitales y CRM con automatización.

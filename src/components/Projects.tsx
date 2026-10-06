@@ -1,9 +1,15 @@
 import { projects } from '../content/profile';
-import { CaseFacts, CaseHeading, CaseWork } from './CaseParts';
+import { CaseFacts, CaseHeading, CaseProcess, CaseWork } from './CaseParts';
 import CrmCase from './CrmCase';
 import './Projects.css';
 
 const byId = (id: string) => projects.find((p) => p.id === id)!;
+
+const WORK_LABEL: Record<string, string> = {
+  simps: 'Ver qué hace y mi parte',
+  'sg-web': 'Ver funcionalidades y resultados',
+  connectart: 'Ver funcionalidades y resultados',
+};
 
 function SimpsCase() {
   const p = byId('simps');
@@ -18,7 +24,7 @@ function SimpsCase() {
           <p className="case__summary">{p.summary}</p>
           <CaseFacts project={p} />
         </div>
-        <CaseWork project={p} />
+        <CaseWork project={p} label={WORK_LABEL[p.id]} />
       </div>
     </article>
   );
@@ -28,30 +34,33 @@ function SgWebCase() {
   const p = byId('sg-web');
   return (
     <article className="case case--sg" id={p.id} data-line="web" aria-labelledby={`${p.id}-t`}>
-      <figure className="browser">
-        <div className="browser__bar" aria-hidden="true">
-          <span className="browser__url">{p.url ? new URL(p.url).host : 'S&G Immigration'}</span>
+      <div className="case__split case__split--media-first">
+        <figure className="browser">
+          <div className="browser__bar" aria-hidden="true">
+            <span className="browser__url">{p.url ? new URL(p.url).host : 'S&G Group'}</span>
+          </div>
+          <div className="browser__view">
+            {p.image ? (
+              <img src={p.image.src} alt={p.image.alt} loading="lazy" width={1600} height={1000} />
+            ) : (
+              <div className="browser__placeholder" aria-hidden="true">
+                <span>S&amp;G</span>
+                <span>Group LLC</span>
+              </div>
+            )}
+          </div>
+        </figure>
+        <div className="case__text">
+          <CaseHeading project={p} />
+          <p className="case__summary">{p.summary}</p>
+          <p className="case__note">
+            Es la misma firma que hoy trabaja con HEBRIX como su CRM: el sitio atrae al cliente y el CRM le da
+            seguimiento.
+          </p>
+          <CaseFacts project={p} />
         </div>
-        <div className="browser__view">
-          {p.image ? (
-            <img src={p.image.src} alt={p.image.alt} loading="lazy" width={1600} height={1000} />
-          ) : (
-            <div className="browser__placeholder" aria-hidden="true">
-              <span>S&amp;G</span>
-              <span>Immigration</span>
-            </div>
-          )}
-        </div>
-      </figure>
-      <div className="case__text">
-        <CaseHeading project={p} />
-        <p className="case__summary">{p.summary}</p>
-        <p className="case__note">
-          Es la cara pública de la misma empresa para la que desarrollo el CRM. El sitio y el CRM cubren dos partes
-          de un mismo proceso: atraer al cliente y darle seguimiento.
-        </p>
-        <CaseFacts project={p} />
       </div>
+      <CaseWork project={p} label={WORK_LABEL[p.id]} />
     </article>
   );
 }
@@ -60,23 +69,24 @@ function ConnectArtCase() {
   const p = byId('connectart');
   return (
     <article className="case case--connectart" id={p.id} data-line="producto" aria-labelledby={`${p.id}-t`}>
-      <div className="case__text">
-        <CaseHeading project={p} />
-        <p className="case__summary">{p.summary}</p>
-        <CaseFacts project={p} />
+      <div className="case__split">
+        <div className="case__text">
+          <CaseHeading project={p} />
+          <p className="case__summary">{p.summary}</p>
+          <CaseFacts project={p} />
+        </div>
+        <figure className="product-field">
+          {p.image ? (
+            <img src={p.image.src} alt={p.image.alt} loading="lazy" width={1600} height={1200} />
+          ) : (
+            <>
+              <figcaption className="product-field__caption">Cómo evolucionó el sitio</figcaption>
+              <CaseProcess project={p} />
+            </>
+          )}
+        </figure>
       </div>
-      <figure className="product-field">
-        {p.image ? (
-          <img src={p.image.src} alt={p.image.alt} loading="lazy" width={1600} height={1200} />
-        ) : (
-          <div className="product-field__diagram" aria-hidden="true">
-            <span className="product-field__line" data-line="web" />
-            <span className="product-field__line" data-line="producto" />
-            <span className="product-field__station" />
-            <span className="product-field__mark">ConnectArt</span>
-          </div>
-        )}
-      </figure>
+      <CaseWork project={p} label={WORK_LABEL[p.id]} />
     </article>
   );
 }

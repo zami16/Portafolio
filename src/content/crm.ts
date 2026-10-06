@@ -1,5 +1,6 @@
 /**
- * Estructura real del CRM de S&G Immigration en GoHighLevel.
+ * HEBRIX: plataforma CRM de marca propia sobre GoHighLevel.
+ * La estructura de abajo es la del primer cliente, S&G Group LLC.
  * Consultada en modo lectura el 6 de octubre de 2026. Solo estructura:
  * no contiene ni muestra información de clientes.
  *
@@ -12,16 +13,16 @@ export const crmSnapshotDate = '6 de octubre de 2026';
 export const pipeline = {
   name: 'Immigration Sales',
   stages: [
-    { name: 'New Lead', gloss: 'Contacto nuevo' },
-    { name: 'Initial Contact', gloss: 'Primer contacto' },
-    { name: 'Consultation Scheduled', gloss: 'Consulta agendada' },
-    { name: 'Consultation Done', gloss: 'Consulta realizada' },
-    { name: 'Proposal Sent', gloss: 'Propuesta enviada' },
-    { name: 'Contract Signed', gloss: 'Contrato firmado' },
+    { name: 'New Lead', gloss: 'Contacto nuevo', probability: 10 },
+    { name: 'Initial Contact', gloss: 'Primer contacto', probability: 25 },
+    { name: 'Consultation Scheduled', gloss: 'Consulta agendada', probability: 40 },
+    { name: 'Consultation Done', gloss: 'Consulta realizada', probability: 60 },
+    { name: 'Proposal Sent', gloss: 'Propuesta enviada', probability: 75 },
+    { name: 'Contract Signed', gloss: 'Contrato firmado', probability: 90 },
   ],
   outcomes: [
-    { name: 'Won', gloss: 'Cliente', kind: 'won' as const },
-    { name: 'Lost', gloss: 'Perdido', kind: 'lost' as const },
+    { name: 'Won', gloss: 'Cliente', probability: 100, kind: 'won' as const },
+    { name: 'Lost', gloss: 'Perdido', probability: 0, kind: 'lost' as const },
   ],
 };
 
@@ -211,6 +212,59 @@ export const fieldGroups: FieldGroup[] = [
       { name: 'Additional Information', key: 'contact.additional_information', type: 'longtext' },
     ],
   },
+];
+
+export const whiteLabel = {
+  domains: [
+    { host: 'app.hebrix.io', role: 'Aplicación' },
+    { host: 'api.hebrix.io', role: 'API' },
+  ],
+  items: [
+    'Dominio propio con DNS configurado en Namecheap',
+    'Logo y colores corporativos',
+    'Pantalla de inicio de sesión personalizada con CSS',
+    'Todo el sistema en inglés, para usuarios en Estados Unidos',
+  ],
+};
+
+/** Agenda, segmentación y acceso del primer cliente. Sin nombres de personas. */
+export const operations = [
+  {
+    name: 'Agenda',
+    items: [
+      'Tres calendarios: uno general y uno por profesional',
+      'Citas de 30 minutos, de lunes a viernes de 9 a 5',
+      'El cliente puede reprogramar o cancelar',
+    ],
+  },
+  {
+    name: 'Etiquetas',
+    items: [
+      'hot lead, cold lead, vip client',
+      'missed call, call attempted, awaiting callback',
+      'needs documents, pending payment',
+      'active case, consultation done, closed case',
+    ],
+  },
+  {
+    name: 'Usuarios y permisos',
+    items: ['Acceso por rol: administrador y paralegal', 'Permisos limitados según el rol'],
+  },
+];
+
+export const integrationsInProgress = [
+  'Telefonía VoIP con portación del número existente',
+  'WhatsApp Business API',
+  'Facebook e Instagram en una bandeja unificada',
+  'Correo con Google',
+];
+
+export const projectManagement = [
+  'Levantamiento de requisitos',
+  'Propuesta comercial',
+  'Cronograma por fases',
+  'Auditorías semanales',
+  'Documentación para el cliente',
 ];
 
 export const crmCounts = {
