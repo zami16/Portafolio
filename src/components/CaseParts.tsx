@@ -1,4 +1,5 @@
 import { lines, type Project } from '../content/profile';
+import MobileCollapse from './MobileCollapse';
 
 /**
  * Título del caso con sus badges de línea delante, como el nombre de una estación
@@ -25,24 +26,35 @@ export function CaseHeading({ project }: { project: Project }) {
 export function CaseFacts({ project }: { project: Project }) {
   const rows = [
     { term: 'Rol', value: project.role },
-    { term: 'Equipo', value: project.team },
+    { term: 'Equipo', value: project.team, short: true },
+    { term: 'Periodo', value: project.period, short: true },
     { term: 'Estado', value: project.status },
-    { term: 'Periodo', value: project.period },
     { term: 'Problema', value: project.problem },
     { term: 'Solución', value: project.solution },
-    { term: 'Tecnologías', value: project.stack.length ? project.stack.join(', ') : null },
   ].filter((r) => r.value);
 
   return (
     <>
-      {rows.length > 0 && (
+      {(rows.length > 0 || project.stack.length > 0) && (
         <dl className="case-facts">
           {rows.map((r) => (
-            <div key={r.term}>
+            <div key={r.term} className={r.short ? undefined : 'case-facts__wide'}>
               <dt>{r.term}</dt>
               <dd>{r.value}</dd>
             </div>
           ))}
+          {project.stack.length > 0 && (
+            <div className="case-facts__wide">
+              <dt>Tecnologías</dt>
+              <dd>
+                <ul className="chips">
+                  {project.stack.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          )}
         </dl>
       )}
       <CaseLinks project={project} />
@@ -51,41 +63,43 @@ export function CaseFacts({ project }: { project: Project }) {
 }
 
 /** Funcionalidades del producto y, aparte, lo que hizo Zahira. */
-export function CaseWork({ project }: { project: Project }) {
+export function CaseWork({ project, label }: { project: Project; label: string }) {
   if (!project.features.length && !project.contributions.length && !project.results.length) return null;
   return (
-    <div className="case-work">
-      {project.features.length > 0 && (
-        <div className="case-work__group">
-          <h4 className="case-work__title">Qué hace</h4>
-          <ul className="case-features">
-            {project.features.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {project.contributions.map((c) => (
-        <div className="case-work__group" key={c.area}>
-          <h4 className="case-work__title">Mi parte en el {c.area.toLowerCase()}</h4>
-          <ul className="case-features">
-            {c.items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
-      {project.results.length > 0 && (
-        <div className="case-work__group">
-          <h4 className="case-work__title">Resultados</h4>
-          <ul className="case-features case-features--results">
-            {project.results.map((r) => (
-              <li key={r}>{r}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+    <MobileCollapse label={label}>
+      <div className="case-work">
+        {project.features.length > 0 && (
+          <div className="case-work__group">
+            <h4 className="case-work__title">Qué hace</h4>
+            <ul className="case-features">
+              {project.features.map((f) => (
+                <li key={f}>{f}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {project.contributions.map((c) => (
+          <div className="case-work__group" key={c.area}>
+            <h4 className="case-work__title">Mi parte en el {c.area.toLowerCase()}</h4>
+            <ul className="case-features">
+              {c.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        {project.results.length > 0 && (
+          <div className="case-work__group">
+            <h4 className="case-work__title">Resultados</h4>
+            <ul className="case-features case-features--results">
+              {project.results.map((r) => (
+                <li key={r}>{r}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </MobileCollapse>
   );
 }
 

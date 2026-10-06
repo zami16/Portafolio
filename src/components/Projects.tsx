@@ -5,6 +5,12 @@ import './Projects.css';
 
 const byId = (id: string) => projects.find((p) => p.id === id)!;
 
+const WORK_LABEL: Record<string, string> = {
+  simps: 'Ver qué hace y mi parte',
+  'sg-web': 'Ver funcionalidades y resultados',
+  connectart: 'Ver funcionalidades y resultados',
+};
+
 function SimpsCase() {
   const p = byId('simps');
   return (
@@ -18,7 +24,7 @@ function SimpsCase() {
           <p className="case__summary">{p.summary}</p>
           <CaseFacts project={p} />
         </div>
-        <CaseWork project={p} />
+        <CaseWork project={p} label={WORK_LABEL[p.id]} />
       </div>
     </article>
   );
@@ -54,7 +60,7 @@ function SgWebCase() {
           <CaseFacts project={p} />
         </div>
       </div>
-      <CaseWork project={p} />
+      <CaseWork project={p} label={WORK_LABEL[p.id]} />
     </article>
   );
 }
@@ -80,7 +86,7 @@ function ConnectArtCase() {
           )}
         </figure>
       </div>
-      <CaseWork project={p} />
+      <CaseWork project={p} label={WORK_LABEL[p.id]} />
     </article>
   );
 }

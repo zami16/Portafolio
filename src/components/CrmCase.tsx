@@ -15,6 +15,7 @@ import {
 } from '../content/crm';
 import { useInView } from '../hooks/useInView';
 import { CaseFacts, CaseHeading } from './CaseParts';
+import MobileCollapse from './MobileCollapse';
 import './CrmCase.css';
 
 const project = projects.find((p) => p.id === 'crm')!;
@@ -55,8 +56,10 @@ function Pipeline() {
               <li key={s.name} style={{ ['--i' as string]: i }}>
                 <span className="pipeline__dot" aria-hidden="true" />
                 <span className="pipeline__name">{s.name}</span>
-                <span className="pipeline__gloss">{s.gloss}</span>
-                <span className="pipeline__prob">{s.probability} %</span>
+                <span className="pipeline__gloss">
+                  {s.gloss}
+                  <span className="pipeline__prob">{s.probability} %</span>
+                </span>
               </li>
             ))}
           </ol>
@@ -285,10 +288,12 @@ export default function CrmCase() {
           Primer cliente: <strong>S&amp;G Group LLC</strong>. Esto es lo que configuré para la firma.
         </p>
         <Pipeline />
-        <Workflows />
-        <Operations />
-        <Fields />
-        <Roadmap />
+        <MobileCollapse label="Ver automatizaciones, agenda, campos e integraciones">
+          <Workflows />
+          <Operations />
+          <Fields />
+          <Roadmap />
+        </MobileCollapse>
 
         <p className="crm__source">
           Estructura tomada de la cuenta del primer cliente en modo lectura el {crmSnapshotDate}. Los nombres aparecen

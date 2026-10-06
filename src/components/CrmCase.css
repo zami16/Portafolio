@@ -537,7 +537,7 @@
   }
 
   .pipeline__stages .pipeline__dot {
-    grid-row: span 3;
+    grid-row: span 2;
   }
 
   .pipeline__outcomes {
@@ -565,5 +565,106 @@
 @media (max-width: 47.99rem) {
   .timetable {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Celular: el CRM se lee en un solo recorrido corto */
+@media (max-width: 47.99rem) {
+  .crm {
+    padding-block: var(--space-8);
+  }
+
+  .crm__summary {
+    font-size: var(--step-1);
+  }
+
+  .crm-block {
+    margin-top: var(--space-8);
+  }
+
+  .crm-block__head {
+    margin-bottom: var(--space-5);
+  }
+
+  .crm-block__title {
+    font-size: var(--step-1);
+  }
+
+  .crm__client {
+    margin-top: var(--space-8);
+    font-size: var(--step-1);
+  }
+
+  .crm__client + .crm-block {
+    margin-top: var(--space-6);
+  }
+
+  .whitelabel__domains li {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .whitelabel__host {
+    font-size: var(--step--1);
+  }
+
+  .crm-list {
+    gap: var(--space-2);
+    font-size: var(--step--1);
+  }
+
+  .pipeline__entry {
+    padding-bottom: var(--space-5);
+  }
+
+  .pipeline__entry ul {
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .pipeline__stages {
+    gap: var(--space-3);
+  }
+
+  .pipeline__stages .pipeline__dot {
+    grid-row: span 2;
+  }
+
+  .pipeline__prob {
+    display: inline;
+    margin: 0 0 0 var(--space-2);
+  }
+
+  .pipeline__outcomes {
+    gap: var(--space-3);
+    padding-top: var(--space-3);
+  }
+
+  .pipeline__outcomes::before {
+    height: calc(var(--space-3) + var(--dot) / 2);
+  }
+
+  .timetable {
+    gap: var(--space-5);
+  }
+
+  .timetable ul {
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+  }
+
+  .timetable__name {
+    font-size: var(--step--1);
+  }
+
+  .fields__list {
+    gap: var(--space-4);
+  }
+
+  .fields__name {
+    font-size: var(--step--1);
+  }
+
+  .mcollapse .crm-block:first-child {
+    margin-top: 0;
   }
 }
