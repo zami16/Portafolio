@@ -131,8 +131,20 @@
   gap: clamp(2rem, 5vw, 6rem);
 }
 
-.case--simps .case__summary {
-  margin-top: 0;
+.case-work {
+  display: grid;
+  gap: var(--space-7);
+  align-content: start;
+}
+
+.case-work__title {
+  font-size: var(--step-1);
+  font-weight: 800;
+  font-stretch: var(--wide);
+}
+
+.case-work .case-features {
+  margin-top: var(--space-4);
 }
 
 /* S&G: el sitio dentro de un navegador */

@@ -25,6 +25,7 @@ export function CaseHeading({ project }: { project: Project }) {
 export function CaseFacts({ project }: { project: Project }) {
   const rows = [
     { term: 'Rol', value: project.role },
+    { term: 'Equipo', value: project.team },
     { term: 'Estado', value: project.status },
     { term: 'Periodo', value: project.period },
     { term: 'Problema', value: project.problem },
@@ -44,32 +45,54 @@ export function CaseFacts({ project }: { project: Project }) {
           ))}
         </dl>
       )}
-      {project.features.length > 0 && (
-        <ul className="case-features">
-          {project.features.map((f) => (
-            <li key={f}>{f}</li>
-          ))}
-        </ul>
-      )}
       <CaseLinks project={project} />
     </>
   );
 }
 
+/** Funcionalidades del producto y, aparte, lo que hizo Zahira. */
+export function CaseWork({ project }: { project: Project }) {
+  if (!project.features.length && !project.contributions.length) return null;
+  return (
+    <div className="case-work">
+      {project.features.length > 0 && (
+        <div className="case-work__group">
+          <h4 className="case-work__title">Qué hace</h4>
+          <ul className="case-features">
+            {project.features.map((f) => (
+              <li key={f}>{f}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {project.contributions.map((c) => (
+        <div className="case-work__group" key={c.area}>
+          <h4 className="case-work__title">Mi parte en el {c.area.toLowerCase()}</h4>
+          <ul className="case-features">
+            {c.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function CaseLinks({ project }: { project: Project }) {
-  if (!project.url && !project.repo) return null;
+  if (!project.url && !project.repos.length) return null;
   return (
     <p className="case-links">
       {project.url && (
         <a className="button button--solid" href={project.url} target="_blank" rel="noreferrer">
-          Ver sitio
+          {project.urlLabel ?? 'Ver sitio'}
         </a>
       )}
-      {project.repo && (
-        <a className="button button--ghost" href={project.repo} target="_blank" rel="noreferrer">
-          Ver código
+      {project.repos.map((r) => (
+        <a key={r.href} className="button button--ghost" href={r.href} target="_blank" rel="noreferrer">
+          {r.label}
         </a>
-      )}
+      ))}
     </p>
   );
 }

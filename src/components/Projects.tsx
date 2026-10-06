@@ -1,5 +1,5 @@
 import { projects } from '../content/profile';
-import { CaseFacts, CaseHeading } from './CaseParts';
+import { CaseFacts, CaseHeading, CaseWork } from './CaseParts';
 import CrmCase from './CrmCase';
 import './Projects.css';
 
@@ -13,21 +13,12 @@ function SimpsCase() {
         <span />
       </div>
       <div className="case-simps__grid">
-        <CaseHeading project={p} />
         <div>
+          <CaseHeading project={p} />
           <p className="case__summary">{p.summary}</p>
-          <dl className="case-facts case-facts--inline">
-            <div>
-              <dt>Institución</dt>
-              <dd>Universidad EAFIT</dd>
-            </div>
-            <div>
-              <dt>Modalidad</dt>
-              <dd>Bootcamp en convenio con EA</dd>
-            </div>
-          </dl>
           <CaseFacts project={p} />
         </div>
+        <CaseWork project={p} />
       </div>
     </article>
   );

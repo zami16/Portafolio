@@ -65,8 +65,14 @@ export interface Project {
   /** Periodo legible, por ejemplo 'Ago 2026 - hoy'. */
   period: string | null;
   status: string | null;
+  /** Texto del botón del sitio en vivo. */
+  urlLabel?: string;
   url: string | null;
-  repo: string | null;
+  repos: { label: string; href: string }[];
+  /** Con quién se hizo, si fue en equipo. */
+  team: string | null;
+  /** Lo que hizo Zahira, agrupado por área. */
+  contributions: { area: string; items: string[] }[];
   /** Captura real del proyecto dentro de /public. */
   image: { src: string; alt: string } | null;
 }
@@ -75,19 +81,48 @@ export const projects: Project[] = [
   {
     id: 'simps',
     station: 'SIMPS',
-    name: 'Bootcamp SIMPS',
+    name: 'Nodo Store',
     lines: ['formacion'],
     summary:
-      'Bootcamp realizado directamente con la Universidad EAFIT, en convenio con EA.',
-    role: null,
+      'Tienda en línea de expansiones de Los Sims 4, construida en el bootcamp SIMPS de la Universidad EAFIT en convenio con Electronic Arts (EA).',
+    role: 'Desarrollo frontend y backend dentro del equipo',
     problem: null,
     solution: null,
-    features: [],
-    stack: [],
-    period: null,
+    features: [
+      'Catálogo, carrito y compras',
+      'Registro e inicio de sesión con formulario, Google y Facebook',
+      'Programa Beta Tester y panel de administración',
+      'Contenido en español e inglés, tema claro y oscuro',
+    ],
+    stack: ['React', 'Vite', 'Zustand', 'Java 21', 'Spring Boot', 'Spring Security', 'JWT', 'PostgreSQL'],
+    period: 'Noviembre de 2025 a junio de 2026',
     status: null,
-    url: null,
-    repo: null,
+    urlLabel: 'Ver aplicación',
+    url: 'https://nodo404.vercel.app',
+    repos: [
+      { label: 'Código frontend', href: 'https://github.com/mateoPosada82231/front-reto-tecnico-nodo404' },
+      { label: 'Código backend', href: 'https://github.com/mateoPosada82231/reto-tecnico-nodo-nodo404' },
+    ],
+    team: 'Equipo Nodo 404',
+    contributions: [
+      {
+        area: 'Backend',
+        items: [
+          'Configuración base de autenticación con JWT y Spring Security',
+          'Repositorios y servicios de usuarios, extensiones y compras',
+          'Entidad y repositorio del carrito',
+          'Correos de confirmación de compra y de cambio de contraseña',
+        ],
+      },
+      {
+        area: 'Frontend',
+        items: [
+          'Estructura base, enrutamiento y layout global',
+          'Página de perfil con campos editables',
+          'Panel lateral del carrito de compras',
+        ],
+      },
+    ],
     image: null,
   },
   {
@@ -95,7 +130,7 @@ export const projects: Project[] = [
     station: 'S&G web',
     name: 'Sitio web de S&G Immigration',
     lines: ['web'],
-    summary: 'Sitio web para S&G Immigration, empresa de servicios migratorios en Estados Unidos.',
+    summary: 'Sitio de una empresa de servicios migratorios en Maryland, Estados Unidos, con versión en español para sus clientes.',
     role: null,
     problem: null,
     solution: null,
@@ -103,8 +138,10 @@ export const projects: Project[] = [
     stack: [],
     period: null,
     status: null,
-    url: null,
-    repo: null,
+    url: 'https://sggroupmd.com/es',
+    repos: [],
+    team: null,
+    contributions: [],
     image: null,
   },
   {
@@ -120,8 +157,10 @@ export const projects: Project[] = [
     stack: [],
     period: null,
     status: null,
-    url: null,
-    repo: null,
+    url: 'https://connectart.online',
+    repos: [],
+    team: null,
+    contributions: [],
     image: null,
   },
   {
@@ -131,7 +170,7 @@ export const projects: Project[] = [
     lines: ['automatizacion'],
     summary:
       'El sistema que organiza la operación comercial de S&G Immigration en GoHighLevel: cómo entra un contacto, por qué etapas pasa y qué se automatiza.',
-    role: 'Desarrollo del CRM',
+    role: 'Lo construí completo',
     problem: null,
     solution: null,
     features: [],
@@ -139,7 +178,9 @@ export const projects: Project[] = [
     period: 'Desde agosto de 2026',
     status: 'En desarrollo',
     url: null,
-    repo: null,
+    repos: [],
+    team: null,
+    contributions: [],
     image: null,
   },
 ];
@@ -158,7 +199,7 @@ export const journey = [
     id: 'simps',
     station: 'SIMPS',
     title: 'Bootcamp SIMPS',
-    place: 'Universidad EAFIT, en convenio con EA',
+    place: 'Universidad EAFIT y Electronic Arts',
     line: 'formacion' as LineId,
     year: null as number | null,
     href: '#simps',
@@ -200,8 +241,8 @@ export interface StackGroup {
 
 /** Solo tecnologías confirmadas. Agrega aquí las que falten. */
 export const stack: StackGroup[] = [
-  { name: 'Interfaz', items: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS'] },
-  { name: 'Backend', items: ['Java', 'Spring Boot'] },
+  { name: 'Interfaz', items: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Vite'] },
+  { name: 'Backend', items: ['Java', 'Spring Boot', 'Spring Security', 'JWT'] },
   { name: 'Datos', items: ['SQL', 'PostgreSQL'] },
   {
     name: 'CRM y automatización',
