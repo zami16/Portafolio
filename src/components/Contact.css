@@ -1,0 +1,86 @@
+.contact {
+  border-top: 1px solid var(--rule);
+  padding-bottom: clamp(4rem, 3rem + 5vw, 8rem);
+}
+
+.contact__title {
+  max-width: 16ch;
+  font-size: var(--step-display);
+  font-stretch: var(--wide);
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+
+.contact__lede {
+  margin-top: var(--space-5);
+}
+
+.contact__email {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-6);
+  margin-top: clamp(2.5rem, 2rem + 3vw, 4rem);
+  padding-top: var(--space-6);
+  border-top: 3px solid var(--ink);
+}
+
+.contact__address {
+  font-size: clamp(1.25rem, 0.6rem + 3.6vw, 2.75rem);
+  font-weight: 750;
+  font-stretch: 106%;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact__address:hover {
+    text-decoration-color: var(--line-web);
+  }
+}
+
+.contact__phone {
+  margin-top: var(--space-4);
+  font-size: var(--step-2);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.contact__phone a {
+  text-decoration-thickness: 2px;
+}
+
+.contact__copy {
+  min-width: 11.5rem;
+  justify-content: center;
+}
+
+/* Cambio de estado con un leve desenfoque para que no se vean dos textos superpuestos */
+@media (prefers-reduced-motion: no-preference) {
+  .contact__copy-label {
+    animation: copy-swap 220ms var(--ease-out);
+  }
+}
+
+@keyframes copy-swap {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  margin-top: var(--space-6);
+  font-weight: 650;
+}
+
+.contact__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
