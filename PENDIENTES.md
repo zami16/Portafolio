@@ -42,5 +42,4 @@ Confirmado: lo construiste completo y S&G autoriza mostrarlo.
 
 ## Otros proyectos (sin incluir todavía)
 
-- [ ] ¿Incluir `zami16/NODO`, el reto técnico de nodo404 o `JAMLizca/Hestia`? Para revisarlos
-      hay que dar acceso a esos repositorios en la sesión.
+- [ ] ¿Incluir `zami16/NODO` o `JAMLizca/Hestia`? (El reto de nodo404 ya está incluido como Nodo Store.)
