@@ -5,9 +5,7 @@ página, así que puedes llenarlos uno a uno sin romper nada.
 
 ## Perfil y contacto
 
-- [ ] Confirmar que `zaminemu0816@gmail.com` es el correo que quieres publicar (`contact.email`).
-- [ ] URL de LinkedIn (`contact.linkedin`).
-- [ ] Hoja de vida en PDF: copiar a `public/` y poner la ruta en `contact.cv`.
+- [ ] Hoja de vida en PDF, cuando exista: copiar a `public/` y poner la ruta en `contact.cv`.
 - [ ] Año de grado en la USCO (`profile.graduationYear`).
 - [ ] Dominio final del sitio (para `canonical`, `og:url` y sitemap).
 
@@ -24,21 +22,20 @@ Confirmado: sggroupmd.com y autorización de S&G.
 
 - [ ] Captura real del sitio (`image`): el entorno bloquea sggroupmd.com, así que hay que
       subirla a mano a `public/` o permitir el dominio en la red del entorno.
-- [ ] Tecnologías, rol (¿lo hiciste sola?) y funcionalidades.
+- [ ] Tecnologías, rol (¿lo hiciste sola?) y funcionalidades. Esta información está en tus
+      conversaciones de claude.ai, que esta sesión no puede leer: hay que pegarla aquí.
 
 ## ConnectArt (`id: 'connectart'`)
 
 Confirmado: connectart.online.
 
 - [ ] Captura real (`image`), mismo bloqueo de red que S&G.
-- [ ] Qué es exactamente, para quién, tecnologías, hosting y funcionalidades.
+- [ ] Qué es exactamente, para quién, tecnologías, hosting y funcionalidades (misma nota).
 
 ## CRM de S&G (`id: 'crm'`, más `src/content/crm.ts`)
 
-Confirmado: lo construiste completo y S&G autoriza mostrarlo.
-
-- [ ] WhatsApp / Twilio: ¿está implementado? Hoy **no** se menciona en la página.
-- [ ] Usuarios y roles configurados. Hoy **no** se mencionan.
+Confirmado: lo construiste completo, S&G autoriza mostrarlo, y WhatsApp, Twilio y los roles de
+usuario funcionan. Si cambia la estructura del CRM, actualizar `src/content/crm.ts`.
 
 ## Otros proyectos (sin incluir todavía)
 

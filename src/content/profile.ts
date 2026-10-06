@@ -39,11 +39,10 @@ export const profile = {
 };
 
 export const contact = {
-  /** Confirmar que este es el correo que quieres publicar. */
   email: 'zaminemu0816@gmail.com' as string | null,
   github: 'https://github.com/zami16' as string | null,
-  /** PENDIENTE */
-  linkedin: null as string | null,
+  phone: '+57 321 255 9191' as string | null,
+  linkedin: 'https://www.linkedin.com/in/zahira-neira-48b307311/' as string | null,
   /** PENDIENTE. Ruta a un PDF dentro de /public, por ejemplo '/cv-zahira-neira.pdf'. */
   cv: null as string | null,
 };
@@ -173,10 +172,14 @@ export const projects: Project[] = [
     role: 'Lo construí completo',
     problem: null,
     solution: null,
-    features: [],
+    features: [
+      'WhatsApp integrado para la comunicación con clientes',
+      'Telefonía con Twilio',
+      'Usuarios con roles y permisos',
+    ],
     stack: ['GoHighLevel'],
     period: 'Desde agosto de 2026',
-    status: 'En desarrollo',
+    status: 'Funcionando, con mejoras en curso',
     url: null,
     repos: [],
     team: null,

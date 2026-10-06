@@ -36,10 +36,14 @@ function CopyEmail({ email }: { email: string }) {
 
 export default function Contact() {
   const others = [
+    contact.phone && {
+      label: 'WhatsApp',
+      href: `https://wa.me/${contact.phone.replace(/\D/g, '')}`,
+    },
     { label: 'GitHub', href: contact.github },
     { label: 'LinkedIn', href: contact.linkedin },
     { label: 'Hoja de vida (PDF)', href: contact.cv },
-  ].filter((l): l is { label: string; href: string } => Boolean(l.href));
+  ].filter((l): l is { label: string; href: string } => Boolean(l && l.href));
 
   return (
     <section className="contact section" id="contacto" aria-labelledby="contact-title">
@@ -56,6 +60,12 @@ export default function Contact() {
             </a>
             <CopyEmail email={contact.email} />
           </div>
+        )}
+
+        {contact.phone && (
+          <p className="contact__phone">
+            <a href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a>
+          </p>
         )}
 
         {others.length > 0 && (

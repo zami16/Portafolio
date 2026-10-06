@@ -99,6 +99,22 @@ function Workflows() {
   );
 }
 
+function Connections() {
+  return (
+    <div className="crm-block">
+      <div className="crm-block__head">
+        <h4 className="crm-block__title">Comunicación y acceso</h4>
+        <p className="crm-block__desc">Lo que conecta el CRM con los clientes y con el equipo de la firma.</p>
+      </div>
+      <ul className="crm-connections">
+        {project.features.map((f) => (
+          <li key={f}>{f}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function Fields() {
   const [active, setActive] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -191,6 +207,7 @@ export default function CrmCase() {
 
         <Pipeline />
         <Workflows />
+        <Connections />
         <Fields />
 
         <p className="crm__source">

@@ -41,6 +41,17 @@
   }
 }
 
+.contact__phone {
+  margin-top: var(--space-4);
+  font-size: var(--step-2);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.contact__phone a {
+  text-decoration-thickness: 2px;
+}
+
 .contact__copy {
   min-width: 11.5rem;
   justify-content: center;
