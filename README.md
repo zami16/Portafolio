@@ -13,13 +13,26 @@ proyecto una estación. El sistema visual está documentado en [`DESIGN.md`](DES
 - Prerender del HTML en el build, para SEO y para que el contenido llegue sin JavaScript.
 - Fuentes autoalojadas: Archivo Variable y JetBrains Mono Variable.
 
-## Comandos
+## Cómo verlo
+
+> **No abras `index.html` con doble clic ni con "Go Live" sobre el código fuente:** el sitio
+> está en React + TypeScript y necesita Vite. Así se ve en blanco.
 
 ```bash
-npm install
-npm run dev        # desarrollo en http://localhost:5173
+npm install        # solo la primera vez
+npm run dev        # abre http://localhost:5173
+```
+
+- **En tu celular:** con `npm run dev` corriendo, la terminal muestra una dirección "Network"
+  (por ejemplo `http://192.168.1.5:5173`). Ábrela en el celular conectado al mismo WiFi.
+- **Con "Go Live":** primero `npm run build`. El proyecto ya está configurado para que Live
+  Server muestre la carpeta `dist/`, que es el sitio terminado.
+
+Otros comandos:
+
+```bash
 npm run build      # typecheck + build + prerender en dist/
-npm run preview    # sirve dist/
+npm run preview    # sirve dist/ en http://localhost:4173
 ```
 
 ## Editar el contenido

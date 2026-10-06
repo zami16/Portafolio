@@ -47,5 +47,21 @@
   <body>
     <div id="root"><!--app--></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Si la página se abrió sin Vite (doble clic en index.html o "Go Live" sobre el código
+      // fuente), React nunca arranca y la página queda en blanco. En ese caso se explica cómo abrirla.
+      setTimeout(function () {
+        var root = document.getElementById('root');
+        if (root && !root.firstElementChild) {
+          root.innerHTML =
+            '<div style="max-width:36rem;margin:12vh auto;padding:0 1.5rem;font:16px/1.6 system-ui,sans-serif;color:#15171c">' +
+            '<h1 style="font-size:1.6rem;margin:0 0 1rem">Este sitio necesita Vite para verse</h1>' +
+            '<p>Abre una terminal en la carpeta del proyecto y ejecuta:</p>' +
+            '<pre style="background:#e9eae6;padding:1rem;border-radius:8px">npm install\nnpm run dev</pre>' +
+            '<p>Luego abre <strong>http://localhost:5173</strong>. Para usar "Go Live", primero ejecuta <code>npm run build</code>.</p>' +
+            '</div>';
+        }
+      }, 3000);
+    </script>
   </body>
 </html>

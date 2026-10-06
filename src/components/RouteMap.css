@@ -33,8 +33,12 @@
   transition: opacity var(--dur-ui) ease;
 }
 
+.route--vertical {
+  overflow: hidden;
+}
+
 .route--vertical .route-line path {
-  stroke-width: 8px;
+  stroke-width: 7px;
 }
 
 .route-line__future {
