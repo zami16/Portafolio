@@ -1,0 +1,177 @@
+.route-map {
+  width: 100%;
+}
+
+.route-map__v {
+  display: none;
+}
+
+@media (max-width: 47.99rem) {
+  .route-map__h {
+    display: none;
+  }
+
+  .route-map__v {
+    display: block;
+    max-width: 24rem;
+  }
+}
+
+.route {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Líneas */
+.route-line path {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: var(--stroke-line);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: opacity var(--dur-ui) ease;
+}
+
+.route--vertical .route-line path {
+  stroke-width: 8px;
+}
+
+.route-line__future {
+  stroke-dasharray: 0.1 18;
+  opacity: 0.55;
+}
+
+.route[data-focus] .route-line:not([data-active]) path {
+  opacity: 0.16;
+}
+
+/* Estaciones */
+.route-station {
+  cursor: pointer;
+  outline: none;
+}
+
+.route-station__hit {
+  fill: transparent;
+}
+
+.route-station__dot {
+  fill: var(--station-fill);
+  stroke: var(--ink);
+  stroke-width: 3.5px;
+}
+
+.route-station[data-terminal] .route-station__dot {
+  stroke-width: 4.5px;
+}
+
+.route-station__mark {
+  transition: transform var(--dur-ui) var(--ease-out);
+}
+
+.route-station__label {
+  fill: var(--ink);
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+.route-station__name {
+  font-size: 17px;
+  font-weight: 800;
+  font-stretch: var(--wide);
+}
+
+.route-station__sub {
+  font-size: 13px;
+  font-weight: 450;
+  fill: var(--ink-muted);
+}
+
+.route--vertical .route-station__name {
+  font-size: 16px;
+}
+
+.route-station:focus-visible .route-station__dot {
+  stroke: var(--focus);
+  stroke-width: 5px;
+}
+
+.route-station:focus-visible .route-station__name,
+.route-station:hover .route-station__name {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .route-station:hover .route-station__mark {
+    transform: scale(1.12);
+  }
+}
+
+.route-station:active .route-station__mark {
+  transform: scale(0.94);
+}
+
+/* Leyenda */
+.route-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-5);
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.route-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/*
+ * El único momento orquestado de la página: las líneas se trazan y las estaciones
+ * aparecen. Corre en CSS (sin esperar a JavaScript) y nunca oculta contenido
+ * cuando el usuario pide menos movimiento.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .route-line__solid {
+    stroke-dasharray: 1;
+    animation: route-draw 1300ms var(--ease-in-out) backwards;
+    animation-delay: calc(var(--i) * 140ms + 120ms);
+  }
+
+  .route-line__future {
+    animation: route-fade 600ms ease backwards;
+    animation-delay: 1300ms;
+  }
+
+  .route-station__mark,
+  .route-station__label {
+    animation: route-pop 420ms var(--ease-out) backwards;
+    animation-delay: calc(var(--i) * 90ms + 520ms);
+  }
+}
+
+@keyframes route-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes route-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes route-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}

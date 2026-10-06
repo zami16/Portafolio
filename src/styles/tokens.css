@@ -1,0 +1,104 @@
+/*
+ * Sistema visual: mapa de transporte.
+ * Cada color de línea codifica una disciplina. Ningún color es decorativo.
+ */
+:root {
+  color-scheme: light dark;
+
+  /* Superficies y tinta */
+  --ground: #f3f4f1;
+  --ground-raised: #fbfbf9;
+  --ink: #15171c;
+  --ink-muted: #50565e;
+  --rule: #cfd2cb;
+  --rule-strong: #9ea39b;
+  --station-fill: #ffffff;
+
+  /* Líneas: trazo / texto sobre fondo */
+  --line-formacion: #b8326b;
+  --line-web: #2348d8;
+  --line-producto: #0b7f57;
+  --line-automatizacion: #e8641c;
+  --line-automatizacion-ink: #a8430a;
+
+  --on-line: #ffffff;
+  --focus: #2348d8;
+  --selection-bg: #15171c;
+  --selection-ink: #f3f4f1;
+
+  /* Tipografía */
+  --font-sans: 'Archivo Variable', 'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --step--1: 0.875rem;
+  --step-0: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
+  --step-1: clamp(1.125rem, 1.06rem + 0.3vw, 1.3125rem);
+  --step-2: clamp(1.375rem, 1.22rem + 0.7vw, 1.75rem);
+  --step-3: clamp(1.75rem, 1.4rem + 1.6vw, 2.75rem);
+  --step-4: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+  --step-display: clamp(2.5rem, 1.2rem + 5.4vw, 6rem);
+
+  --wide: 118%;
+  --extra-wide: 125%;
+
+  /* Espacio */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --section: clamp(5rem, 3rem + 8vw, 9.5rem);
+  --gutter: clamp(1rem, 0.4rem + 2.6vw, 3rem);
+  --max: 84rem;
+  --measure: 62ch;
+
+  /* Forma */
+  --radius-pill: 999px;
+  --stroke-line: 10px;
+
+  /* Movimiento (Emil Kowalski): ease-out fuerte para entradas, in-out para desplazamiento */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --dur-press: 140ms;
+  --dur-ui: 200ms;
+
+  /* Capas */
+  --z-header: 10;
+  --z-skip: 20;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #121418;
+    --ground-raised: #191c21;
+    --ink: #e8e9e4;
+    --ink-muted: #a4a9b0;
+    --rule: #2e3239;
+    --rule-strong: #4a4f57;
+    --station-fill: #121418;
+
+    --line-formacion: #e8669c;
+    --line-web: #7593ff;
+    --line-producto: #3ebf8c;
+    --line-automatizacion: #ff8a3d;
+    --line-automatizacion-ink: #ff9a55;
+
+    --on-line: #121418;
+    --focus: #7593ff;
+    --selection-bg: #e8e9e4;
+    --selection-ink: #121418;
+  }
+}
+
+[data-line='formacion'] { --line: var(--line-formacion); --line-ink: var(--line-formacion); }
+[data-line='web'] { --line: var(--line-web); --line-ink: var(--line-web); }
+[data-line='producto'] { --line: var(--line-producto); --line-ink: var(--line-producto); }
+[data-line='automatizacion'] { --line: var(--line-automatizacion); --line-ink: var(--line-automatizacion-ink); --on-line: #15171c; }
+
+@media (prefers-color-scheme: dark) {
+  [data-line='automatizacion'] { --on-line: #121418; }
+}

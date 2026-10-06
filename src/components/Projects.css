@@ -1,0 +1,278 @@
+.projects {
+  border-top: 1px solid var(--rule);
+  padding-bottom: 0;
+}
+
+.projects__head {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: clamp(3rem, 2rem + 4vw, 6rem);
+}
+
+/* Partes comunes */
+.case {
+  padding-block: clamp(3rem, 2rem + 4vw, 6rem);
+  border-top: 1px solid var(--rule);
+}
+
+.case-heading {
+  font-size: var(--step-3);
+  font-stretch: var(--wide);
+}
+
+.case-heading__badges {
+  display: inline-flex;
+  gap: 0.12em;
+  margin-right: 0.3em;
+  vertical-align: 0.12em;
+}
+
+.case-heading__badges .line-badge {
+  font-size: 0.42em;
+  width: 1.9em;
+  height: 1.9em;
+}
+
+.case__summary {
+  max-width: var(--measure);
+  margin-top: var(--space-4);
+  font-size: var(--step-1);
+  line-height: 1.45;
+}
+
+.case__note {
+  max-width: var(--measure);
+  margin-top: var(--space-4);
+  color: var(--ink-muted);
+}
+
+.case-facts {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.case-facts dt {
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.case-facts dd {
+  margin-top: var(--space-1);
+  font-weight: 600;
+}
+
+.case-facts--inline {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+
+.case-features {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.case-features li {
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.case-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+}
+
+.case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+/* SIMPS: una banda; la línea de formación cruza el caso de lado a lado */
+.case-simps__track {
+  position: relative;
+  height: 1.5rem;
+  margin-bottom: var(--space-6);
+}
+
+.case-simps__track::before {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: var(--radius-pill);
+  background: var(--line);
+}
+
+.case-simps__track span {
+  position: absolute;
+  top: 50%;
+  left: clamp(2rem, 18%, 14rem);
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: -0.75rem;
+  border-radius: 50%;
+  background: var(--station-fill);
+  border: 3.5px solid var(--ink);
+}
+
+.case-simps__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 6rem);
+}
+
+.case--simps .case__summary {
+  margin-top: 0;
+}
+
+/* S&G: el sitio dentro de un navegador */
+.case--sg {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.browser {
+  border: 2px solid var(--ink);
+  background: var(--ground-raised);
+  box-shadow: 0 30px 60px -32px color-mix(in srgb, var(--line) 55%, transparent);
+}
+
+.browser__bar {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 2px solid var(--ink);
+}
+
+.browser__url {
+  flex: 1;
+  padding: 0.3rem var(--space-3);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.browser__view {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  container-type: inline-size;
+}
+
+.browser__view img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.browser__placeholder {
+  display: grid;
+  align-content: end;
+  height: 100%;
+  padding: clamp(1.25rem, 4%, 2.5rem);
+  background: var(--line);
+  color: var(--on-line);
+  font-weight: 850;
+  font-stretch: var(--extra-wide);
+  font-size: 11cqi;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+/* ConnectArt: el producto ocupa un campo de color completo */
+.case--connectart {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: stretch;
+}
+
+.case--connectart .case__text {
+  align-self: center;
+}
+
+/*
+ * ConnectArt vive en dos líneas a la vez (Web y Producto). Sin captura todavía,
+ * el visual es esa estación de intercambio, no un logotipo inventado.
+ */
+.product-field {
+  container-type: inline-size;
+  border: 2px solid var(--ink);
+  background: var(--ground-raised);
+  overflow: hidden;
+}
+
+.product-field img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-field__diagram {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+
+.product-field__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3.2cqi;
+  margin-top: -1.6cqi;
+  background: var(--line);
+}
+
+.product-field__line[data-line='web'] {
+  top: 30%;
+}
+
+.product-field__line[data-line='producto'] {
+  top: 52%;
+}
+
+.product-field__station {
+  position: absolute;
+  left: 30%;
+  top: calc(30% - 4cqi);
+  width: 8cqi;
+  height: calc(22% + 8cqi);
+  border-radius: var(--radius-pill);
+  background: var(--station-fill);
+  border: 1cqi solid var(--ink);
+}
+
+.product-field__mark {
+  position: absolute;
+  left: 5cqi;
+  bottom: 5cqi;
+  font-weight: 850;
+  font-stretch: var(--extra-wide);
+  font-size: 12cqi;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+}
+
+@media (max-width: 47.99rem) {
+  .case-simps__grid,
+  .case--sg,
+  .case--connectart {
+    grid-template-columns: 1fr;
+  }
+
+  .case--connectart .product-field {
+    order: -1;
+  }
+}
