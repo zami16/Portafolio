@@ -78,8 +78,9 @@ function geometry(orientation: Orientation): Geometry {
       point: ([t, lane]) => [pad.x + t * unit, pad.y + lane * unit],
     };
   }
-  const unit = 50;
-  const pad = { x: 22, y: 24 };
+  // Carriles más juntos en celular: deja casi la mitad del ancho para las etiquetas.
+  const unit = 40;
+  const pad = { x: 20, y: 24 };
   return {
     unit,
     pad,
@@ -105,7 +106,7 @@ function labelPosition(s: MapStation, g: Geometry, o: Orientation) {
   const bottom = Math.max(...s.lanes);
   if (o === 'vertical') {
     const [, y] = g.point([s.t, 0]);
-    return { x: g.pad.x + 3 * g.unit + 34, y: y - 6, anchor: 'start' as const };
+    return { x: g.pad.x + 3 * g.unit + 30, y: y - 6, anchor: 'start' as const };
   }
   const [x, yTop] = g.point([s.t, top]);
   const [, yBottom] = g.point([s.t, bottom]);

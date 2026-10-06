@@ -4,6 +4,22 @@
   box-sizing: border-box;
 }
 
+/*
+ * Nada puede ensanchar la página: aunque un elemento se salga (por ejemplo con el
+ * tamaño de letra del sistema más grande), el celular nunca se desplaza de lado.
+ */
+html,
+body {
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
@@ -60,6 +76,7 @@ ol {
 h1,
 h2,
 h3 {
+  overflow-wrap: break-word;
   font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.02em;
